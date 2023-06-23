@@ -131,19 +131,25 @@
 
         <p><a href = "../pictures/ein_beispiel_eines_termins.ics">kalenderdingens</a></p>
     </section>
+    
+    
+    
     <section class="slide" height="100.1%" style="font-size:19px">
-    <label>Modus:</label>									<!-- Auswahl -->
+    <label>Modus:</label>									
+    <!-- Auswahl -->
 		<select id="mode" style="margin-top: 1%; padding: 0.5%;">
 			<option style="font-family: sans-serif value=1">Maximale Gruppengröße</option>
 			<option value="2">Anzahl der Gruppen</option>
 		</select>
-		<label style="margin-top: 1%;">Gruppengröße ODER Anzahl der Gruppen:</label>				<!-- Anzahl der Gruppen oder Maximum -->
+		<label style="margin-top: 1%;">Gruppengröße ODER Anzahl der Gruppen:</label>				
+    <!-- Anzahl der Gruppen oder Maximum -->
 		<input type="number" id="number" min="1" value="2" style="margin-top: 1%; padding: 0.5%;">
 		<br>
 		<label style="margin-top: 2%;">Namen hier einfügen (Jede Zeile ein Name):</label><br> 
 		<textarea style="margin-top: 1%; padding: 0.5%;" cols="50" rows="5" id="names"></textarea>
 		<button id="btnGenerate" onClick="Generate()" style="margin-top: 1%; padding: 1%; font-size:16px; background-color: #00AAE3; color: white;">Gruppen generieren</button><br>
-		Gruppen:</br>		<!-- Ausgabe -->
+		Gruppen:</br>		
+    <!-- Ausgabe -->
 		Namen insgesamt: <span id="tn"></span><br>
     Gruppen insgesamt: <span id="tg"></span><br>
 		<span id="groups"></span>
@@ -265,17 +271,19 @@
 			array[counter] = array[index];
 			array[index] = temp;
 		}
-
 		return array;
 }
 
 
 </script>
 </section>
+
 <section class="slide">
   <h1 style="color: #ff0000">das ist super wichtig, zum angeben!!!!</h1>
 
-  </section>
+</section>
+
+
 
     <!--
 Hier könnt ihr euch Musterslides aussuchen, kopieren und anpassen
