@@ -1,15 +1,11 @@
 function setup() {
   createCanvas(800, 800);
   frameRate(20);
-<<<<<<< HEAD
-  myPTag = createP("This here is some text");
-  myPTag.position(200, 100);
-=======
->>>>>>> main
-  }
-  
+}
   
 function draw() {
+  let myPTag = createP("This here is some text");
+  myPTag.position(200, 100);
   ellipse(400,400,400);
   line (400,0,400,800);
   line(0,400,800,400);
