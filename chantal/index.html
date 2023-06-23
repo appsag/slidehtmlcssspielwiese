@@ -114,6 +114,177 @@
       </p>
     </section>
 
+    <section class="slide">
+        <h5>html grundkurs erster tag coole theoretische einführung und praktisch folgendes</h5>
+        <h6>Die Zelle</h6>
+    <p>Das <i>Leben</i> entspringt auf alle <u>Fälle</u>- oh 1 extra &nbsp leerzeichen<br>
+        aus <sup>einer</sup> <b>Zelle</b>- oh 2 extra &ensp; leerzeichen.</p>
+    <p>Nur <em>manchmal</em> endet's auch bei <strong>Strolchen</strong><br>
+        in einer solchen - oh 4 extra &emsp; leerzeichen.</p>
+    <p><sub>von</sub><s>Heinz</s> Erhardt</p>
+    <p></p>
+    <p></p>
+    <p></p>
+    </section>
+    <section class="slide" font-size:12px>
+        <h2>ein termin zum in den kalender packen</h2>
+
+        <p><a href = "../pictures/ein_beispiel_eines_termins.ics">kalenderdingens</a></p>
+    </section>
+    
+    
+    
+    <section class="slide" height="100.1%" style="font-size:19px">
+    <label>Modus:</label>									
+    <!-- Auswahl -->
+		<select id="mode" style="margin-top: 1%; padding: 0.5%;">
+			<option style="font-family: sans-serif value=1">Maximale Gruppengröße</option>
+			<option value="2">Anzahl der Gruppen</option>
+		</select>
+		<label style="margin-top: 1%;">Gruppengröße ODER Anzahl der Gruppen:</label>				
+    <!-- Anzahl der Gruppen oder Maximum -->
+		<input type="number" id="number" min="1" value="2" style="margin-top: 1%; padding: 0.5%;">
+		<br>
+		<label style="margin-top: 2%;">Namen hier einfügen (Jede Zeile ein Name):</label><br> 
+		<textarea style="margin-top: 1%; padding: 0.5%;" cols="50" rows="5" id="names"></textarea>
+		<button id="btnGenerate" onClick="Generate()" style="margin-top: 1%; padding: 1%; font-size:16px; background-color: #00AAE3; color: white;">Gruppen generieren</button><br>
+		Gruppen:</br>		
+    <!-- Ausgabe -->
+		Namen insgesamt: <span id="tn"></span><br>
+    Gruppen insgesamt: <span id="tg"></span><br>
+		<span id="groups"></span>
+    <a onclick="window.location.href=this"><u>Seite neu laden und Felder zurücksetzen</u>
+		</a>
+	<script>
+	function Generate()
+	{
+		let names = document.getElementById('names').value;
+		let mode = document.getElementById('mode').value;
+		let number = document.getElementById('number').value;
+		
+		if(names == '')
+		{									
+			alert("Bitte Namen eingeben...");
+			return;
+		}
+		
+		names = names.split('\n');
+		
+		names = shuffle(names);
+		
+		let groups = [];
+		
+		if(mode == 1)
+		{
+			let groupNo = 0;
+			let j = 0;
+			let group = [];
+			
+			for(let i = 0; i < names.length; i++)
+			{
+				if(i % number == 0 && i >= number) {					
+					groups[groupNo] = group;
+					groupNo++; j = 0;
+					group = [];
+				}
+				
+				group[j] = names[i];
+				
+				j++;
+			}
+			
+			groups[groupNo] = group;
+		}
+		
+		if(mode == 2)
+		{
+			let perGroup = Math.floor(names.length / number);
+			let perGroupLeft = names.length - (perGroup * number);
+			
+			let groupNo = 0;
+			let j = 0;
+			let group = [];
+			
+			for(let i = 0; i < names.length; i++)
+			{
+				console.log(i);
+				if(i % perGroup == 0 && i >= perGroup) {
+					console.log(i+"asdsad");
+					if(perGroupLeft > 0 && group.length == perGroup)
+					{
+						group[j] = names[i];
+						i++;
+						perGroupLeft--;						
+						
+						console.log(i+'asd');
+					}
+					
+					if(group.length >= perGroup){
+						j = 0;
+						groups[groupNo] = group;					
+						group = [];
+						groupNo++; 
+					}
+				}
+				
+				group[j] = names[i];
+				
+				j++;
+			}
+			
+			groups[groupNo] = group;
+		}
+		
+		
+		
+		document.getElementById('tn').innerHTML = names.length;
+		document.getElementById('tg').innerHTML = groups.length;
+		document.getElementById('groups').innerHTML = '';
+		
+		for(let i = 0; i < groups.length; i++)
+		{
+			for(let j = 0; j < groups[i].length; j++)
+				document.getElementById('groups').innerHTML += groups[i][j]+', ';
+			
+			document.getElementById('groups').innerHTML += '<br>';
+		}
+		
+	}
+
+	/**
+	 * Shuffles array in place.
+	 * @param {Array} a items The array containing the items.
+	 */
+	function shuffle(array) {
+		let counter = array.length;
+
+		// While there are elements in the array
+		while (counter > 0) {
+			// Pick a random index
+			let index = Math.floor(Math.random() * counter);
+
+			// Decrease counter by 1
+			counter--;
+
+			// And swap the last element with it
+			let temp = array[counter];
+			array[counter] = array[index];
+			array[index] = temp;
+		}
+		return array;
+}
+
+
+</script>
+</section>
+
+<section class="slide">
+  <h1 style="color: #ff0000">das ist super wichtig, zum angeben!!!!</h1>
+
+</section>
+
+
+
     <!--
 Hier könnt ihr euch Musterslides aussuchen, kopieren und anpassen
 
